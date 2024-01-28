@@ -15,7 +15,7 @@ maindloop: main.o libclassloops.so
 	gcc -g -Wall -o mains  main.o ./libclassloops.so
 
 maindrec: main.o libclassrec.so
-	gcc -g -Wall -o maindrec main.o ./libclassrec.so
+	gcc -g -Wall -o maindloop main.o ./libclassrec.so
 
 libclassloops.a: basicClassification.o advancedClassificationLoop.o
 	ar rcs libclassloops.a basicClassification.o advancedClassificationLoop.o
