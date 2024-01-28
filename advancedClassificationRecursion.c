@@ -39,7 +39,7 @@ int isArmstrong(int x)
 
 }
 
-int numDigits(int count);
+int numDigits(int count)
 {
     int temp=count;
     int num=0;
