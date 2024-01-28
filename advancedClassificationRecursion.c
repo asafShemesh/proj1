@@ -1,5 +1,7 @@
 #include "NumClass.h"
 #include <stdio.h>
+int isArmstrongHelp(int num,int sum,int count);
+
 int power(int a, int b)
 { 
     if (!b)
@@ -25,15 +27,27 @@ int length(int x)
     return 1 + x / 10;
 }
 
-// Recursive helper function to find the sum of powers of digits
-int sumOfPowers(int n, int digits) 
+int isArmstrong(int x)
 {
-    if (n % 10 == n)
-        return power(n, digits);
-    return power(n % 10, digits) + sumOfPowers(n / 10, digits);
+    int temp=x;
+    int sum=0,count=0;
+    while(temp!=0)//num of digits
+    {
+        temp=temp/10;
+        count++;
+    }
+
+    int n=isArmstrongHelp(x,sum,count);
+    if(n==x)
+        return 1;
+    return 0; 
+
 }
 
-int isArmstrong(int a)
+int isArmstrongHelp(int num,int sum,int count)
 {
-    return a == sumOfPowers(a, length(a));
+    if(num==0)
+        return sum;
+    sum=sum+power(num%10,count); 
+    return isArmstrongHelp(num/10,sum,count--);
 }
