@@ -1,7 +1,7 @@
 #include "NumClass.h"
 #include <stdio.h>
 int isArmstrongHelp(int num,int sum,int count);
-
+int numDigits(int count);
 int power(int a, int b)
 { 
     if (!b)
@@ -30,19 +30,27 @@ int length(int x)
 int isArmstrong(int x)
 {
     int temp=x;
-    int sum=0,count=0;
-    while(temp!=0)//num of digits
-    {
-        temp=temp/10;
-        count++;
-    }
-
-    int n=isArmstrongHelp(x,sum,count);
+    int sum=0;
+    int num=numDigits(x);
+    int n=isArmstrongHelp(x,sum,num);
     if(n==x)
         return 1;
     return 0; 
 
 }
+
+int numDigits(int count);
+{
+    int temp=count;
+    int num=0;
+     while(temp!=0)
+    {
+        temp=temp/10;
+        num++;
+    }
+    return num;
+}
+
 
 int isArmstrongHelp(int num,int sum,int count)
 {
